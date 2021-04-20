@@ -16,19 +16,44 @@ library(RColorBrewer)
 group_name_score <- twenty_ninteen %>% group_by(Country.or.region) %>% arrange(desc(Score)) %>%  select(Score)
 top_ten <- head(group_name_score, 10)
 
+
+
+top_ten_graph <- ggplot(data = top_ten, aes(x = reorder(Country.or.region, -Score), y = Score)) +
+       labs(title = "Top 10 Happiest Places in 2019", x = "", y ="Happiness") +
+         geom_col()
+
+# Center title text
+top_ten_graph <- top_ten_graph + theme(plot.title = element_text(hjust = 0.5))
+
+
+# Add color
 co <- brewer.pal(10, "Set3") 
-barplot(top_ten$Score, main = "Top 10 Happiest Places in 2019", ylab = "Score", 
-        names.arg = c(top_ten$Country.or.region), 
-        ylim = c(0, 10), col = co)
+#top_ten_graph <- top_ten_graph + scale_fill_brewer(type = "seq", palette = "Set3")
+
+# Draw the graph
+plot(top_ten_graph)
 
 
 # Boxplot for bottom 10 2019
 bottom_ten <- tail(group_name_score, 10)
 bottom_ten <- bottom_ten %>% arrange(Score)
-sad_co <- brewer.pal(9, "Greys") 
-barplot(bottom_ten$Score, main = "Top 10 Unhappiest Places in 2019", 
-        ylab = "Score", names.arg = c(bottom_ten$Country.or.region), 
-        ylim = c(0, 10), col = sad_co)
+
+bottom_ten_graph <- ggplot(data = bottom_ten, aes(x = reorder(Country.or.region, Score), y = Score)) +
+  labs(title = "Bottom 10 Happiest Places in 2019", x = "", y ="Happiness") +
+  geom_col()
+
+# Center title text
+bottom_ten_graph <- bottom_ten_graph + theme(plot.title = element_text(hjust = 0.5))
+
+# Draw the graph
+plot(bottom_ten_graph)
 
 
+#barplot(top_ten$Score, main = "Top 10 Happiest Places in 2019", ylab = "Score", 
+# names.arg = c(top_ten$Country.or.region), 
+#ylim = c(0, 10), col = co)
 
+#sad_co <- brewer.pal(9, "Greys") 
+#barplot(bottom_ten$Score, main = "Top 10 Unhappiest Places in 2019", 
+ #       ylab = "Score", names.arg = c(bottom_ten$Country.or.region), 
+  #      ylim = c(0, 10), col = sad_co)
