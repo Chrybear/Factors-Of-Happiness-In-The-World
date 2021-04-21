@@ -13,12 +13,12 @@ library(dplyr)
 library(ggplot2)
 library(RColorBrewer)
 
-group_name_score <- twenty_ninteen %>% group_by(Country.or.region) %>% arrange(desc(Score)) %>%  select(Score)
+group_name_score <- twenty_ninteen %>% group_by(Country) %>% arrange(desc(Score)) %>%  select(Score)
 top_ten <- head(group_name_score, 10)
 
 
 
-top_ten_graph <- ggplot(data = top_ten, aes(x = reorder(Country.or.region, -Score), y = Score)) +
+top_ten_graph <- ggplot(data = top_ten, aes(x = reorder(Country, -Score), y = Score)) +
        labs(title = "Top 10 Happiest Places in 2019", x = "", y ="Happiness") +
          geom_col()
 
@@ -38,7 +38,7 @@ plot(top_ten_graph)
 bottom_ten <- tail(group_name_score, 10)
 bottom_ten <- bottom_ten %>% arrange(Score)
 
-bottom_ten_graph <- ggplot(data = bottom_ten, aes(x = reorder(Country.or.region, Score), y = Score)) +
+bottom_ten_graph <- ggplot(data = bottom_ten, aes(x = reorder(Country, Score), y = Score)) +
   labs(title = "Bottom 10 Happiest Places in 2019", x = "", y ="Happiness") +
   geom_col()
 
