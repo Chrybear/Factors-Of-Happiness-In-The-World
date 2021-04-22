@@ -49,6 +49,42 @@ bottom_ten_graph <- bottom_ten_graph + theme(plot.title = element_text(hjust = 0
 plot(bottom_ten_graph)
 
 
+# - Use average to make overall top and bottom 10 for countries from 2015 - 2019
+
+# Top 10
+
+avg_happy <- read.csv(file = 'Z:\\Documents\\Spring 2021\\CSC 583\\Team Project\\Factors-Of-Happiness-In-The-World\\happy_data\\Averaged_Data.csv')
+
+group_name_score <- avg_happy %>% group_by(Country) %>%  select(Score.Mean)
+top_ten_overall <- head(group_name_score, 10)
+
+
+
+top_ten_overall_graph <- ggplot(data = top_ten_overall, aes(x = reorder(Country, -Score.Mean), y = Score.Mean)) +
+  labs(title = "Top 10 Happiest Places Overall (2015-2019)", x = "", y ="Happiness") +
+  theme(plot.title = element_text(hjust = 0.5)) + geom_col()
+
+plot(top_ten_overall_graph)
+
+# Bottom 10
+
+bottom_ten_overall <- tail(group_name_score, 10)
+
+
+
+bottom_ten_overall_graph <- ggplot(data = bottom_ten_overall, aes(x = reorder(Country, Score.Mean), y = Score.Mean)) +
+  labs(title = "Bottom 10 Unhappiest Places Overall (2015-2019)", x = "", y ="Happiness") +
+  theme(plot.title = element_text(hjust = 0.5)) + geom_col()
+
+plot(bottom_ten_overall_graph)
+
+
+
+
+
+
+
+
 #barplot(top_ten$Score, main = "Top 10 Happiest Places in 2019", ylab = "Score", 
 # names.arg = c(top_ten$Country.or.region), 
 #ylim = c(0, 10), col = co)
