@@ -1,6 +1,16 @@
 library(ggplot2)
 library(plyr)
 library(dplyr)
+library(matplot)
+########################################################################################
+## Import all data sets from Excel NOTE: .csv file stored in local working directory ##
+######################################################################################
+
+Happy2015 <- as.data.frame(read.csv(file = "2015.csv"))
+Happy2016 <- as.data.frame(read.csv(file = "2016.csv"))
+Happy2017 <- as.data.frame(read.csv(file = "2017.csv"))
+Happy2018 <- as.data.frame(read.csv(file = "2018.csv"))
+Happy2019 <- as.data.frame(read.csv(file = "2019.csv"))
 
   ###################################################
  ## Merge data and calculate mean happiness score ##
@@ -347,9 +357,18 @@ total_means <- merge(total_means, mean_Freedom)
 total_means <- merge(total_means, mean_Generosity)
 total_means <- merge(total_means, mean_Perceptions.of.corruption)
 
+<<<<<<< HEAD
 total_means <- total_means %>% arrange(desc(Score.Mean))
 
 # Save the averaged data
 
 write.csv(total_means, 'Z:\\Documents\\Spring 2021\\CSC 583\\Team Project\\Factors-Of-Happiness-In-The-World\\happy_data\\Averaged_Data.csv')
 
+=======
+total_means <-arrange(total_means, desc(Score.Mean))
+
+
+############################
+## Graphing all mean data ##
+###########################
+>>>>>>> fafebbe65a59020ac19fc57619af65d777345d91
