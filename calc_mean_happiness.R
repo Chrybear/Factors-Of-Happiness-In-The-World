@@ -1,7 +1,7 @@
 library(ggplot2)
 library(plyr)
 library(dplyr)
-library(matplot)
+
 ########################################################################################
 ## Import all data sets from Excel NOTE: .csv file stored in local working directory ##
 ######################################################################################
@@ -46,6 +46,31 @@ happy_2018 <- happy_2018 %>% rename(Score.2018 = Score)
 happy_2019 <- Happy2019 %>% 
   select(Country, Score)
 happy_2019 <- happy_2019 %>% rename(Score.2019 = Score)
+
+
+###########################################
+## Storing the yearly rank each country ##
+#########################################
+
+happy_2015<-arrange(happy_2015, desc(Score.2015))
+happy_2015$rank.2015 <- NA
+happy_2015$rank.2015 <- 1:nrow(happy_2015)
+
+happy_2016<-arrange(happy_2016, desc(Score.2016))
+happy_2016$rank.2016 <- NA
+happy_2016$rank.2016 <- 1:nrow(happy_2016)
+
+happy_2017<-arrange(happy_2017, desc(Score.2017))
+happy_2017$rank.2017 <- NA
+happy_2017$rank.2017 <- 1:nrow(happy_2017)
+
+happy_2018<-arrange(happy_2018, desc(Score.2018))
+happy_2018$rank.2018 <- NA
+happy_2018$rank.2018 <- 1:nrow(happy_2018)
+
+happy_2019<-arrange(happy_2019, desc(Score.2019))
+happy_2019$rank.2019 <- NA
+happy_2019$rank.2019 <- 1:nrow(happy_2019)
 
 
 ##Merge data
@@ -357,18 +382,17 @@ total_means <- merge(total_means, mean_Freedom)
 total_means <- merge(total_means, mean_Generosity)
 total_means <- merge(total_means, mean_Perceptions.of.corruption)
 
-<<<<<<< HEAD
+
 total_means <- total_means %>% arrange(desc(Score.Mean))
 
 # Save the averaged data
-
 write.csv(total_means, 'Z:\\Documents\\Spring 2021\\CSC 583\\Team Project\\Factors-Of-Happiness-In-The-World\\happy_data\\Averaged_Data.csv')
-
-=======
 total_means <-arrange(total_means, desc(Score.Mean))
 
 
-############################
+
+
+
+#############################
 ## Graphing all mean data ##
 ###########################
->>>>>>> fafebbe65a59020ac19fc57619af65d777345d91
