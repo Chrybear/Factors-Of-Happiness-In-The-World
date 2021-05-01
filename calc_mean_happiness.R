@@ -12,17 +12,17 @@ library(hrbrthemes)
 ## Import all data sets from Excel NOTE: .csv file stored in local working directory ##
 ######################################################################################
 
-Happy2015 <- as.data.frame(read.csv(file = "2015.csv"))
-Happy2016 <- as.data.frame(read.csv(file = "2016.csv"))
-Happy2017 <- as.data.frame(read.csv(file = "2017.csv"))
-Happy2018 <- as.data.frame(read.csv(file = "2018.csv"))
-Happy2019 <- as.data.frame(read.csv(file = "2019.csv"))
+# Happy2015 <- as.data.frame(read.csv(file = "2015.csv"))
+# Happy2016 <- as.data.frame(read.csv(file = "2016.csv"))
+# Happy2017 <- as.data.frame(read.csv(file = "2017.csv"))
+# Happy2018 <- as.data.frame(read.csv(file = "2018.csv"))
+# Happy2019 <- as.data.frame(read.csv(file = "2019.csv"))
 
-#Happy2015 <- as.data.frame(read.csv(file = 'Z:\\Documents\\Spring 2021\\CSC 583\\Team Project\\Factors-Of-Happiness-In-The-World\\happy_data\\2015.csv'))
-#Happy2016 <- as.data.frame(read.csv(file = 'Z:\\Documents\\Spring 2021\\CSC 583\\Team Project\\Factors-Of-Happiness-In-The-World\\happy_data\\2016.csv'))
-#Happy2017 <- as.data.frame(read.csv(file = 'Z:\\Documents\\Spring 2021\\CSC 583\\Team Project\\Factors-Of-Happiness-In-The-World\\happy_data\\2017.csv'))
-#Happy2018 <- as.data.frame(read.csv(file = 'Z:\\Documents\\Spring 2021\\CSC 583\\Team Project\\Factors-Of-Happiness-In-The-World\\happy_data\\2018.csv'))
-#Happy2019 <- as.data.frame(read.csv(file = 'Z:\\Documents\\Spring 2021\\CSC 583\\Team Project\\Factors-Of-Happiness-In-The-World\\happy_data\\2019.csv'))
+Happy2015 <- as.data.frame(read.csv(file = 'Z:\\Documents\\Spring 2021\\CSC 583\\Team Project\\Factors-Of-Happiness-In-The-World\\happy_data\\2015.csv'))
+Happy2016 <- as.data.frame(read.csv(file = 'Z:\\Documents\\Spring 2021\\CSC 583\\Team Project\\Factors-Of-Happiness-In-The-World\\happy_data\\2016.csv'))
+Happy2017 <- as.data.frame(read.csv(file = 'Z:\\Documents\\Spring 2021\\CSC 583\\Team Project\\Factors-Of-Happiness-In-The-World\\happy_data\\2017.csv'))
+Happy2018 <- as.data.frame(read.csv(file = 'Z:\\Documents\\Spring 2021\\CSC 583\\Team Project\\Factors-Of-Happiness-In-The-World\\happy_data\\2018.csv'))
+Happy2019 <- as.data.frame(read.csv(file = 'Z:\\Documents\\Spring 2021\\CSC 583\\Team Project\\Factors-Of-Happiness-In-The-World\\happy_data\\2019.csv'))
 
   ###################################################
  ## Merge data and calculate mean happiness score ##
