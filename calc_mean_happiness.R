@@ -213,13 +213,13 @@ Health_2017 <- Health_2017 %>% rename(Health.2017 = Health..Life.Expectancy.)
 
 ##2018
 Health_2018 <- Happy2018 %>% 
-  select(Country, Health..Life.Expectancy.)
-Health_2018 <- Health_2018 %>% rename(Health.2018 = Health..Life.Expectancy.)
+  select(Country, Health..Life.Expectancy)
+Health_2018 <- Health_2018 %>% rename(Health.2018 = Health..Life.Expectancy)
 
 ##2019
 Health_2019 <- Happy2019 %>% 
-  select(Country, Health..Life.Expectancy.)
-Health_2019 <- Health_2019 %>% rename(Health.2019 = Health..Life.Expectancy.)
+  select(Country, Health..Life.Expectancy)
+Health_2019 <- Health_2019 %>% rename(Health.2019 = Health..Life.Expectancy)
 
 
 ##Merge data
