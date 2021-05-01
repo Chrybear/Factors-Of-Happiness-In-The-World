@@ -281,7 +281,7 @@ mean_Freedom <- mean_Freedom %>%
   rowwise() %>%
   mutate(Freedom.Mean = mean(Freedom.2015,Freedom.2016,Freedom.2017,Freedom.2018,Freedom.2019))
 
-mean_Generosity <- arrange(mean_Freedom, desc(Freedom.Mean))
+mean_Freedom <- arrange(mean_Freedom, desc(Freedom.Mean))
 
 head(mean_Freedom, 10)
 
