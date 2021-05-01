@@ -28,7 +28,8 @@ benin_vals_2017 <- big_happy %>% select(rank.2017, Score.2017, GDP.2017, Social.
 benin_vals_2018 <- big_happy %>% select(rank.2018, Score.2018, GDP.2018, Social.2018, Health.2018, Freedom.2018, Generosity.2018, Perceptions.of.corruption.2018)
 benin_vals_2019 <- big_happy %>% select(rank.2019, Score.2019, GDP.2019, Social.2019, Health.2019, Freedom.2019, Generosity.2019, Perceptions.of.corruption.2019)
 
-
+class(benin_vals_2015)
+ggplot(benin_vals_2015, aes(x = c()))
 
 
 
