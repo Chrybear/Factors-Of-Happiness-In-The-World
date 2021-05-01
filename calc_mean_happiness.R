@@ -390,7 +390,8 @@ total_means <- merge(total_means, mean_Freedom)
 total_means <- merge(total_means, mean_Generosity)
 total_means <- merge(total_means, mean_Perceptions.of.corruption)
 
-total_means$rank.mean <- (mean_happiness$rank.2015 + mean_happiness$rank.2016 + mean_happiness$rank.2017 + mean_happiness$rank.2018 + mean_happiness$rank.2019)/5
+
+#total_means$rank.mean <- (mean_happiness$rank.2015 + mean_happiness$rank.2016 + mean_happiness$rank.2017 + mean_happiness$rank.2018 + mean_happiness$rank.2019)/5
 
 total_means <- total_means %>% arrange(desc(Score.Mean))
 
