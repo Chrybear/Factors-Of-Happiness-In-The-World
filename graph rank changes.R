@@ -7,24 +7,23 @@ library(dplyr)
 library(reshape2)
 library(hrbrthemes)
 
-
+# Get the averaged data (need to change per PC)
+avg_happy <- read.csv(file = 'Z:\\Documents\\Spring 2021\\CSC 583\\Team Project\\Factors-Of-Happiness-In-The-World\\happy_data\\Averaged_Data.csv')
 
 ################################
 ## Reformatting for graphing ##
 ##############################
-mean_happiness %>% arrange(desc(Score.Mean))
+avg_happy %>% arrange(desc(Score.Mean))
 
 #Top ranks
-top_happy_ranks <- mean_happiness %>% select(Country,rank.2015,rank.2016,rank.2017,rank.2018,rank.2019, rank.mean)
-top_happy_ranks <- mutate(top_happy_ranks, rank.mean = (rank.2015 + rank.2016 + rank.2017 + rank.2018 + rank.2019)/5)
-top_happy_ranks <- top_happy_ranks %>% arrange(rank.mean) %>% head(5)
+top_happy_ranks <- avg_happy %>% select(Country,rank.2015,rank.2016,rank.2017,rank.2018,rank.2019, rank.mean)
+top_happy_ranks <- top_happy_ranks %>% arrange(rank.mean) %>% head(10)
 
 top_happy_ranks.long <- melt(top_happy_ranks,id.vars ="Country")
 
 #Bottom ranks
-bottom_happy_ranks <- mean_happiness %>% select(Country,rank.2015,rank.2016,rank.2017,rank.2018,rank.2019)
-bottom_happy_ranks <- mutate(bottom_happy_ranks, rank.mean = (rank.2015 + rank.2016 + rank.2017 + rank.2018 + rank.2019)/5)
-bottom_happy_ranks <- bottom_happy_ranks %>% arrange(desc(rank.mean)) %>% head(5)
+bottom_happy_ranks <- avg_happy %>% select(Country,rank.2015,rank.2016,rank.2017,rank.2018,rank.2019, rank.mean)
+bottom_happy_ranks <- bottom_happy_ranks %>% arrange(desc(rank.mean)) %>% head(10)
 
 bottom_happy_ranks.long <- melt(bottom_happy_ranks,id.vars ="Country")
 
@@ -34,30 +33,34 @@ bottom_happy_ranks.long <- melt(bottom_happy_ranks,id.vars ="Country")
 ## Graphing data ##
 ##################
 
-#Top 5 Rank Graph
+#Top 10 Rank Graph
 #Grouped by year
-ggplot(top_happy_ranks.long, aes(x=variable,y=value, fill=factor(Country)))+
-  geom_bar(stat = "identity", position = "dodge")+
-  xlab("Country") + ylab("Yearly Rank")
+# ggplot(top_happy_ranks.long, aes(x=variable,y=value, fill=factor(Country)))+
+#   geom_bar(stat = "identity", position = "dodge")+
+#   xlab("Country") + ylab("Yearly Happiness Rank") + ggtitle("Rank Changes Amongst Top 10 Happiest") +
+#   theme(plot.title = element_text(hjust = 0.5))
 
-#Grouped by Country
+#Grouped by Country (probably best, no need for by year?)
 ggplot(top_happy_ranks.long, aes(x=Country,y=value, fill=factor(variable)))+
   geom_bar(stat = "identity", position = "dodge")+
-  xlab("Country") + ylab("Yearly Rank")
+  xlab("Country") + ylab("Yearly Happiness Rank (Lower = Higher Rank)") + ggtitle("Rank Changes Amongst Top 10 Happiest") +
+  theme(plot.title = element_text(hjust = 0.5)) + geom_text(aes(label=top_happy_ranks.long$value), position = position_dodge(width=0.9), vjust=1.5)
 
 
-#Bottom 5 Rank Graph
+#Bottom 10 Rank Graph
 #Grouped by year
-ggplot(bottom_happy_ranks.long, aes(x=variable,y=value, fill=factor(Country)))+
-  geom_bar(stat = "identity", position = "dodge")+
-  xlab("Country") + ylab("Yearly Rank")+
-  coord_cartesian(ylim = c(140, NA))
+# ggplot(bottom_happy_ranks.long, aes(x=variable,y=value, fill=factor(Country)))+
+#   geom_bar(stat = "identity", position = "dodge")+
+#   xlab("Country") + ylab("Yearly Happiness Rank")+
+#   coord_cartesian(ylim = c(140, NA)) + ggtitle("Rank Changes Amongst Bottom 10 Happiest") +
+#   theme(plot.title = element_text(hjust = 0.5))
 
-#Grouped by Country
+#Grouped by Country (probably best, no need for by year?)
 ggplot(bottom_happy_ranks.long, aes(x=Country,y=value, fill=factor(variable)))+
   geom_bar(stat = "identity", position = "dodge")+
-  xlab("Country") + ylab("Yearly Rank")+
-  coord_cartesian(ylim = c(140, NA))
+  xlab("Country") + ylab("Yearly Happiness Rank (Lower = Higher Rank)")+
+  coord_cartesian(ylim = c(140, NA)) + ggtitle("Rank Changes Amongst Top 10 Happiest") +
+  theme(plot.title = element_text(hjust = 0.5)) + geom_text(aes(label=bottom_happy_ranks.long$value), position = position_dodge(width=0.9), vjust=1.5)
 
 
 
