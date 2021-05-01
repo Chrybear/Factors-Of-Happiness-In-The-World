@@ -392,7 +392,7 @@ total_means <- merge(total_means, mean_Perceptions.of.corruption)
 total_means <- total_means %>% arrange(desc(Score.Mean))
 
 # Save the averaged data
-write.csv(total_means, 'Z:\\Documents\\Spring 2021\\CSC 583\\Team Project\\Factors-Of-Happiness-In-The-World\\happy_data\\Averaged_Data.csv')
+#write.csv(total_means, 'Z:\\Documents\\Spring 2021\\CSC 583\\Team Project\\Factors-Of-Happiness-In-The-World\\happy_data\\Averaged_Data.csv')
 total_means <-arrange(total_means, desc(Score.Mean))
 
 ################################
