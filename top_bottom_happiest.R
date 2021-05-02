@@ -2,51 +2,40 @@
 # Date:
 # Description: R script file for top and bottom 10 happiest places
 
+library(dplyr)
+library(ggplot2)
+library(RColorBrewer)
+
 # Top 10 happiest places as of most recent data (2019)
 
 # v needs to be altered per computer. Can be automated?
 
 twenty_ninteen <- read.csv(file = 'Z:\\Documents\\Spring 2021\\CSC 583\\Team Project\\Factors-Of-Happiness-In-The-World\\happy_data\\2019.csv')
 
-# Boxplot for top 10 happiest 2019
-library(dplyr)
-library(ggplot2)
-library(RColorBrewer)
+# Bar graph for happiest in 2019
+
 
 group_name_score <- twenty_ninteen %>% group_by(Country) %>% arrange(desc(Score)) %>%  select(Score)
 top_ten <- head(group_name_score, 10)
 
+# Graph it
+ggplot(top_ten, aes(x=reorder(Country, -Score), y = Score, fill=factor(reorder(Country, -Score))))+
+  geom_bar(stat = "identity", position = "dodge") + xlab(NULL) + ylab("Happiness") +
+  ggtitle("Top 10 Happiest Places in 2019") + theme(plot.title = element_text(hjust = 0.5, size = 24), axis.text.x = element_text(size = 20)) +
+  geom_text(aes(label=Score), position = position_dodge(width=0.9), vjust=1.5, size = 6) + scale_fill_discrete(name = "Country") +
+  scale_y_continuous(expand=c(0,0), limits = c(0, max(top_ten$Score) + 0.5))
 
 
-top_ten_graph <- ggplot(data = top_ten, aes(x = reorder(Country, -Score), y = Score)) +
-       labs(title = "Top 10 Happiest Places in 2019", x = "", y ="Happiness") +
-         geom_col()
-
-# Center title text
-top_ten_graph <- top_ten_graph + theme(plot.title = element_text(hjust = 0.5))
-
-
-# Add color
-co <- brewer.pal(10, "Set3") 
-#top_ten_graph <- top_ten_graph + scale_fill_brewer(type = "seq", palette = "Set3")
-
-# Draw the graph
-plot(top_ten_graph)
-
-
-# Boxplot for bottom 10 2019
+# Bar graph for bottom 10 2019
 bottom_ten <- tail(group_name_score, 10)
 bottom_ten <- bottom_ten %>% arrange(Score)
 
-bottom_ten_graph <- ggplot(data = bottom_ten, aes(x = reorder(Country, Score), y = Score)) +
-  labs(title = "Bottom 10 Happiest Places in 2019", x = "", y ="Happiness") +
-  geom_col()
-
-# Center title text
-bottom_ten_graph <- bottom_ten_graph + theme(plot.title = element_text(hjust = 0.5))
-
-# Draw the graph
-plot(bottom_ten_graph)
+# Graph it
+ggplot(bottom_ten, aes(x=reorder(Country, Score), y = Score, fill=factor(reorder(Country, Score))))+
+  geom_bar(stat = "identity", position = "dodge") + xlab(NULL) + ylab("Happiness") +
+  ggtitle("Bottom 10 Happiest Places in 2019") + theme(plot.title = element_text(hjust = 0.5, size = 24), axis.text.x = element_text(size = 15)) +
+  geom_text(aes(label=Score), position = position_dodge(width=0.9), vjust=1.5, size = 6) + scale_fill_discrete(name = "Country") +
+  scale_y_continuous(expand=c(0,0), limits = c(0, max(bottom_ten$Score.Mean) + 0.5))
 
 
 # - Use average to make overall top and bottom 10 for countries from 2015 - 2019
@@ -58,25 +47,23 @@ avg_happy <- read.csv(file = 'Z:\\Documents\\Spring 2021\\CSC 583\\Team Project\
 group_name_score <- avg_happy %>% group_by(Country) %>%  select(Score.Mean)
 top_ten_overall <- head(group_name_score, 10)
 
-
-
-top_ten_overall_graph <- ggplot(data = top_ten_overall, aes(x = reorder(Country, -Score.Mean), y = Score.Mean)) +
-  labs(title = "Top 10 Happiest Places Overall (2015-2019)", x = "", y ="Happiness") +
-  theme(plot.title = element_text(hjust = 0.5)) + geom_col()
-
-plot(top_ten_overall_graph)
+# Graph it
+ggplot(top_ten_overall, aes(x=reorder(Country, -Score.Mean), y = Score.Mean, fill=factor(reorder(Country, -Score.Mean))))+
+  geom_bar(stat = "identity", position = "dodge") + xlab(NULL) + ylab("Happiness") +
+  ggtitle("Top 10 Happiest Places Overall") + theme(plot.title = element_text(hjust = 0.5, size = 24), axis.text.x = element_text(size = 20)) +
+  geom_text(aes(label=Score.Mean), position = position_dodge(width=0.9), vjust=1.5, size = 6) + scale_fill_discrete(name = "Country") +
+  scale_y_continuous(expand=c(0,0), limits = c(0, max(top_ten_overall$Score.Mean) + 0.5))
 
 # Bottom 10
 
 bottom_ten_overall <- tail(group_name_score, 10)
 
-
-
-bottom_ten_overall_graph <- ggplot(data = bottom_ten_overall, aes(x = reorder(Country, Score.Mean), y = Score.Mean)) +
-  labs(title = "Bottom 10 Unhappiest Places Overall (2015-2019)", x = "", y ="Happiness") +
-  theme(plot.title = element_text(hjust = 0.5)) + geom_col()
-
-plot(bottom_ten_overall_graph)
+# Graph it
+ggplot(bottom_ten_overall, aes(x=reorder(Country, Score.Mean), y = Score.Mean, fill=factor(reorder(Country, Score.Mean))))+
+  geom_bar(stat = "identity", position = "dodge") + xlab(NULL) + ylab("Happiness") +
+  ggtitle("Bottom 10 Happiest Places Overall") + theme(plot.title = element_text(hjust = 0.5, size = 24), axis.text.x = element_text(size = 15)) +
+  geom_text(aes(label=Score.Mean), position = position_dodge(width=0.9), vjust=1.5, size = 6) + scale_fill_discrete(name = "Country") +
+  scale_y_continuous(expand=c(0,0), limits = c(0, max(bottom_ten_overall$Score.Mean) + 0.5))
 
 
 
