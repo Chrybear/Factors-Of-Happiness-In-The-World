@@ -73,6 +73,7 @@ ggplot(avg_happy, aes(x= GDP.Mean, y = Score.Mean)) +
   geom_point()+
   geom_smooth(method = lm, color = "red", fill="grey", fullrange = TRUE,  se = TRUE)+
   geom_label(label = paste("Sample Estimate: ", format((GDP.Cor$estimate),digits = 4)), x = 0.375, y=6.5, color = "red")+
+  ggtitle("GDP vs Happiness Correlation") + xlab("Mean GDP Score") + ylab("Mean Happiness Score")+
   theme_ipsum()
 
 #Social Scatter PLot
@@ -81,6 +82,7 @@ ggplot(avg_happy, aes(x= Social.support.Mean, y = Score.Mean)) +
   geom_point()+
   geom_smooth(method = lm, color = "red", fill="grey", fullrange = TRUE,  se = TRUE)+
   geom_label(label = paste("Sample Estimate: ", format((Social.Cor$estimate),digits = 4)), x = 0.375, y=6.5, color = "red")+
+  ggtitle("Social vs Happiness Correlation") + xlab("Mean Social Score") + ylab("Mean Happiness Score")+
   theme_ipsum()
 
 #Health Scatter Plot
@@ -90,6 +92,7 @@ ggplot(avg_happy, aes(x= Health.Mean, y = Score.Mean)) +
   geom_point()+
   geom_smooth(method = lm, color = "red", fill="grey", fullrange = TRUE,  se = TRUE)+
   geom_label(label = paste("Sample Estimate: ", format((Health.Cor$estimate),digits = 4)), x = 0.375, y=6.5, color = "red")+
+  ggtitle("Health vs Happiness Correlation") + xlab("Mean Health Score") + ylab("Mean Happiness Score")+
   theme_ipsum()
 
 #Freedom Scatter Plot
@@ -99,6 +102,7 @@ ggplot(avg_happy, aes(x= Freedom.Mean, y = Score.Mean)) +
   geom_point()+
   geom_smooth(method = lm, color = "red", fill="grey", fullrange = TRUE,  se = TRUE)+
   geom_label(label = paste("Sample Estimate: ", format((Freedom.Cor$estimate),digits = 4)), x = 0.375, y=6.5, color = "red")+
+  ggtitle("Freedom vs Happiness Correlation") + xlab("Mean Freedom Score") + ylab("Mean Happiness Score")+
   theme_ipsum()
 
 #Generosity Scatter Plot
@@ -108,6 +112,7 @@ ggplot(avg_happy, aes(x= Generosity.Mean, y = Score.Mean)) +
   geom_point()+
   geom_smooth(method = lm, color = "red", fill="grey", fullrange = TRUE,  se = TRUE)+
   geom_label(label = paste("Sample Estimate: ", format((Generosity.Cor$estimate),digits = 4)), x = 0.375, y=6.5, color = "red")+
+  ggtitle("Generosity vs Happiness Correlation") + xlab("Mean Generosity Score") + ylab("Mean Happiness Score")+
   theme_ipsum()
 
 #Perception Scatter Plot
@@ -117,6 +122,7 @@ ggplot(avg_happy, aes(x= Perceptions.of.corruption.Mean, y = Score.Mean)) +
   geom_point()+
   geom_smooth(method = lm, color = "red", fill="grey", fullrange = TRUE,  se = TRUE)+
   geom_label(label = paste("Sample Estimate: ", format((Perceptions.Cor$estimate),digits = 4)), x = 0.375, y=6.5, color = "red")+
+  ggtitle("Perception of Corruption vs Happiness Correlation") + xlab("Mean Perception Score") + ylab("Mean Happiness Score")+
   theme_ipsum()
 
 
