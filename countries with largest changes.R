@@ -98,9 +98,10 @@ benin_vals.long <- rbind(benin_vals.long, benin_vals_2019.long)
 
 #Makes a beautiful graph
 ggplot(benin_vals.long, aes(x=variable, y = value, fill=factor(Year)))+
-  geom_bar(stat = "identity", position = "dodge") + xlab("Attributes") + ylab("Value Score") +
-  ggtitle("Changes For Benin From 2015-2019") + theme(plot.title = element_text(hjust = 0.5), axis.text.y=element_blank()) +
-  geom_text(aes(label=(sprintf("%0.3f", round(as.double(value), digits = 3)))), position = position_dodge(width=0.9), vjust=1.5) 
+  geom_bar(stat = "identity", position = "dodge") + xlab(NULL) + ylab("Value Score") +
+  ggtitle("Changes For Benin From 2015-2019") + theme(plot.title = element_text(hjust = 0.5, size = 24), axis.text.y=element_blank(), axis.text.x =element_text(size = 15)) +
+  geom_text(aes(label=(sprintf("%0.3f", round(as.double(value), digits = 3)))), position = position_dodge(width=0.9), vjust=1.5) +
+  scale_fill_discrete(name = "Year")
 
 
 
@@ -178,7 +179,8 @@ ven_vals.long <- rbind(ven_vals.long, ven_vals_2019.long)
 
 #Makes a beautiful graph
 ggplot(ven_vals.long, aes(x=variable, y = value, fill=factor(Year)))+
-  geom_bar(stat = "identity", position = "dodge") + xlab("Attributes") + ylab("Value Score") +
-  ggtitle("Changes For Venezuela From 2015-2019") + theme(plot.title = element_text(hjust = 0.5), axis.text.y=element_blank()) +
-  geom_text(aes(label=sprintf("%0.3f", round(as.double(value), digits = 3))), position = position_dodge(width=0.9), vjust=1.5)
+  geom_bar(stat = "identity", position = "dodge") + xlab(NULL) + ylab("Value Score") +
+  ggtitle("Changes For Venezuela From 2015-2019") + theme(plot.title = element_text(hjust = 0.5, size = 24), axis.text.y=element_blank(), axis.text.x =element_text(size = 15)) +
+  geom_text(aes(label=(sprintf("%0.3f", round(as.double(value), digits = 3)))), position = position_dodge(width=0.9), vjust=1.5) +
+  scale_fill_discrete(name = "Year")
 
