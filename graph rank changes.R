@@ -44,7 +44,9 @@ bottom_happy_ranks.long <- melt(bottom_happy_ranks,id.vars ="Country")
 ggplot(top_happy_ranks.long, aes(x=Country,y=value, fill=factor(variable)))+
   geom_bar(stat = "identity", position = "dodge")+
   xlab("Country") + ylab("Happiness Rank (Lower = Higher Rank)") + ggtitle("Rank Changes Among Top 10 Happiest") +
-  theme(plot.title = element_text(hjust = 0.5)) + geom_text(aes(label=top_happy_ranks.long$value), position = position_dodge(width=0.9), vjust=1.5)
+  theme(plot.title = element_text(hjust = 0.5, size = 24), axis.text.x = element_text(size = 20)) + 
+  geom_text(aes(label=value), position = position_dodge(width=0.9), vjust=1.5, size = 5) +
+  scale_y_continuous(expand=c(0,0), limits = c(0, 11.5)) + scale_fill_discrete(name = "Rank That Year")
 
 
 #Bottom 10 Rank Graph
@@ -58,9 +60,11 @@ ggplot(top_happy_ranks.long, aes(x=Country,y=value, fill=factor(variable)))+
 #Grouped by Country (probably best, no need for by year?)
 ggplot(bottom_happy_ranks.long, aes(x=Country,y=value, fill=factor(variable)))+
   geom_bar(stat = "identity", position = "dodge")+
-  xlab("Country") + ylab("Happiness Rank (Lower = Higher Rank)")+
+  xlab(NULL) + ylab("Happiness Rank (Lower = Higher Rank)")+
   coord_cartesian(ylim = c(140, NA)) + ggtitle("Rank Changes Among Bottom 10 Happiest") +
-  theme(plot.title = element_text(hjust = 0.5)) + geom_text(aes(label=bottom_happy_ranks.long$value), position = position_dodge(width=0.9), vjust=1.5)
+  theme(plot.title = element_text(hjust = 0.5), axis.text.x = element_text(size = 20)) + 
+  geom_text(aes(label=value), position = position_dodge(width=0.9), vjust=1.5) +
+  scale_fill_discrete(name = "Rank That Year")
 
 
 
